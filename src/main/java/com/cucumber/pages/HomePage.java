@@ -12,15 +12,15 @@ import org.testng.Assert;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
-import com.cucumber.api.Weather;
+import com.cucumber.api.WeatherAPI;
 
-public class WeatherPage extends BasePage{
+public class HomePage extends BasePage{
 	
-	public WeatherPage(WebDriver driver,ExtentTest test) {
-		super(test,driver);
+	public HomePage(WebDriver driver,ExtentTest test) {
+		
 	}
 	
-	public int getUITempValue(String city) throws InterruptedException, IOException {
+	public void serachCity(String city){
 		
 		
 		 List<WebElement> understandEle=driver.findElements(By.xpath("//div[@class='banner-button policy-accept']"));
@@ -31,10 +31,14 @@ public class WeatherPage extends BasePage{
 		}
 		WebElement searchBar=driver.findElement(By.xpath("//input[@placeholder='Search']"));
 		searchBar.sendKeys(city+Keys.ENTER);
-		TimeUnit.SECONDS.sleep(2);
+	}
+	public void selectCityfromSuggestion() {
+		try {
 		WebElement Suggest=driver.findElement(By.xpath("//div[@class='content-module']//a[1]"));
 		Suggest.click();
-		TimeUnit.SECONDS.sleep(2);
+		
+			TimeUnit.SECONDS.sleep(2);
+		
 		List<WebElement> totalFrames = driver.findElements(By.id("google_ads_iframe_/6581/web/in/interstitial/admin/search_0"));
 
 		if(!(totalFrames.size()==0)) {
@@ -42,8 +46,16 @@ public class WeatherPage extends BasePage{
 			WebElement dismissButton=driver.findElement(By.xpath("//div[@id='dismiss-button']/div"));
 			dismissButton.click();
 			driver.switchTo().defaultContent();
+			
 		}
-
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void Future() {
+		
 		WebElement tempEle=driver.findElement(By.xpath("//div[@class='temp'][1]"));
 		
 		StringBuffer sb= new StringBuffer(tempEle.getText().toString());  
@@ -54,13 +66,12 @@ public class WeatherPage extends BasePage{
 		int actualcount=Integer.parseInt(Stringcount);
 		test.log(Status.PASS, "Temperature from UI is "+actualcount);
 		takeScreenshot();
-		getAPIValue(city, actualcount);
+		//getAPIValue(city, actualcount);
 
-		return actualcount;
 	}
 
 	public void getAPIValue(String city, int actualcount) throws IOException {
-		Weather weather=new Weather();
+		WeatherAPI weather=new WeatherAPI();
 		int expectedValue= weather.getTemp(city);
 		test.log(Status.PASS, "Temperature from API is "+expectedValue);
 		int lowVar=expectedValue-1;

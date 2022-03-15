@@ -5,9 +5,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import com.cucumber.utils.RunConfig;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class SetupClass {
+public class DriverSetupClass {
 
 	WebDriver driver;
 	
@@ -28,6 +30,12 @@ public class SetupClass {
 			System.out.println();
 		}
 		driver.manage().window().maximize();
+		return driver;
+	}
+	
+	public WebDriver openApplication(String Browser) {
+		driver=openBrowser(Browser);
+		driver.get(RunConfig.Test_ApplicationURL);
 		return driver;
 	}
 }

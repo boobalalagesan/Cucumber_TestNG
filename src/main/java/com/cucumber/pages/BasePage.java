@@ -20,8 +20,9 @@ public class BasePage {
 	public WebDriver driver;
 	public ExtentReports extent=ExtentReportManager.setExtentReport();
 	public ExtentTest test;
-	public SetupClass setupClass;
+	public DriverSetupClass driverSetupClass;
 	public Logger logger;
+	public HomePage homePage;
 	public BasePage() {
 
 	}

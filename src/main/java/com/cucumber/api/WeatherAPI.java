@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import org.json.JSONObject;
-public class Weather {
+public class WeatherAPI {
 	public int getTemp(String location) throws IOException{
 		URL url=new URL("https://api.openweathermap.org/data/2.5/weather?q="+location+"&units=metric&appid=7fe67bf08c80ded756e598d6f8fedaea");
 		HttpURLConnection connection=(HttpURLConnection) url.openConnection();
@@ -37,7 +37,7 @@ public class Weather {
 	}
 	public static void main(String[] args) throws IOException {
 		String location="Salem";
-		Weather weather=new Weather();
+		WeatherAPI weather=new WeatherAPI();
 		int responseValue= weather.getTemp(location);
 		System.out.println(responseValue);
 	}
