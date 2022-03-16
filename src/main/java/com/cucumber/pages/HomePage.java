@@ -1,92 +1,63 @@
 package com.cucumber.pages;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
-import com.cucumber.api.WeatherAPI;
 
 public class HomePage extends BasePage{
-	
-	public HomePage(WebDriver driver,ExtentTest test) {
-		
-	}
-	
-	public void serachCity(String city){
-		
-		
-		 List<WebElement> understandEle=driver.findElements(By.xpath("//div[@class='banner-button policy-accept']"));
-		if(understandEle.size()!=0) {
-			for (WebElement webElement : understandEle) {
-				webElement.click();
-			}
-		}
-		WebElement searchBar=driver.findElement(By.xpath("//input[@placeholder='Search']"));
-		searchBar.sendKeys(city+Keys.ENTER);
-	}
-	public void selectCityfromSuggestion() {
-		try {
-		WebElement Suggest=driver.findElement(By.xpath("//div[@class='content-module']//a[1]"));
-		Suggest.click();
-		
-			TimeUnit.SECONDS.sleep(2);
-		
-		List<WebElement> totalFrames = driver.findElements(By.id("google_ads_iframe_/6581/web/in/interstitial/admin/search_0"));
 
-		if(!(totalFrames.size()==0)) {
-			driver.switchTo().frame("google_ads_iframe_/6581/web/in/interstitial/admin/search_0");
-			WebElement dismissButton=driver.findElement(By.xpath("//div[@id='dismiss-button']/div"));
-			dismissButton.click();
-			driver.switchTo().defaultContent();
-			
-		}
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+	public HomePage(WebDriver driver,ExtentTest test) {
+		this.driver=driver;
+		this.test=test;
+		PageFactory.initElements(driver, this);
+
+	}
+	@FindBy (xpath = "//input[@placeholder='Search']") WebElement searchBar;
+	@FindBy(xpath = "//div[@class='banner-button policy-accept']")List<WebElement> understandEle;
+	public void serachCity(String city){
+		try {
+			if(understandEle.size()!=0) {
+				for (WebElement webElement : understandEle) {
+					webElement.click();
+				}
+			}
+			waitUntil(searchBar);
+			searchBar.sendKeys(city+Keys.ENTER);
+
+			test.log(Status.PASS, "Searched successfilly");
+			takeScreenshot();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public void Future() {
-		
-		WebElement tempEle=driver.findElement(By.xpath("//div[@class='temp'][1]"));
-		
-		StringBuffer sb= new StringBuffer(tempEle.getText().toString());  
-		for(int i=1;i<=2;i++) {
-			sb.deleteCharAt(sb.length()-1); 
-		}
-		String Stringcount=sb.toString();
-		int actualcount=Integer.parseInt(Stringcount);
-		test.log(Status.PASS, "Temperature from UI is "+actualcount);
-		takeScreenshot();
-		//getAPIValue(city, actualcount);
 
 	}
 
-	public void getAPIValue(String city, int actualcount) throws IOException {
-		WeatherAPI weather=new WeatherAPI();
-		int expectedValue= weather.getTemp(city);
-		test.log(Status.PASS, "Temperature from API is "+expectedValue);
-		int lowVar=expectedValue-1;
-		int highvar=expectedValue+1;
-		
-		if((actualcount>=lowVar)&&(actualcount<=highvar)) {
-			test.log(Status.PASS, "Temperatures are equal");
+
+	@FindBy(xpath = "//div[@class='content-module']//a[1]") WebElement Suggest;
+	@FindBy(how = How.ID, using = "google_ads_iframe_/6581/web/in/interstitial/admin/search_0")List<WebElement> totalFrames;
+	@FindBy(xpath = "//div[@id='dismiss-button']/div") WebElement dismissButton;
+
+	public void selectCityfromSuggestion() {
+		try {
+			Suggest.click();
+			test.log(Status.PASS, "Clicked suggestion successfilly");
+			takeScreenshot();
+			TimeUnit.SECONDS.sleep(2);
+			if(!(totalFrames.size()==0)) {
+				driver.switchTo().frame("google_ads_iframe_/6581/web/in/interstitial/admin/search_0");
+				dismissButton.click();
+				driver.switchTo().defaultContent();
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
-		else {
-			test.log(Status.FAIL, "Temperatures are not equal");
-			Assert.fail("Temperatures are not equal");
-		}
-	}
-	
-		
-	}
-	
+	}	
+}
+
 

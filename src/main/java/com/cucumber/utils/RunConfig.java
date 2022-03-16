@@ -10,7 +10,7 @@ public class RunConfig {
 	public static final String EDGE_DRIVER_EXE = System.getProperty("user.dir")+File.separator+"src"+File.separator+"main"
 			+File.separator+"resources"+File.separator+"driver"+File.separator+"msedgedriver.exe";
 	
-	public static final String REPORT_PATH=System.getProperty("user.dir")+ File.separator+"ExtentReport";
+	public static final String REPORT_PATH=System.getProperty("user.dir")+File.separator+"test_Report"+ File.separator+"ExtentReport";
 	public static final String Extent_Config_Path=System.getProperty("user.dir")+File.separator+"src"+File.separator+"test"
 			+File.separator+"resources"+File.separator+"extentConfig.xml";
 

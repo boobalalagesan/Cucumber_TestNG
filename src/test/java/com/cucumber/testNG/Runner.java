@@ -7,7 +7,7 @@ import io.cucumber.testng.CucumberOptions;
 		features = "src/test/java/Features/CompareResults.feature", 
 		glue = "com.cucumber.StepDefinition",
 		monochrome = true,
-		dryRun = true,
+		dryRun = false,
 		plugin = {"pretty","html:target/cucumberReport"}
 		)
 
