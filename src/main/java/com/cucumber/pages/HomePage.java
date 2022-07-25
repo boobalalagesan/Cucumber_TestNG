@@ -2,16 +2,20 @@ package com.cucumber.pages;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
 public class HomePage extends BasePage{
-
+	Logger logger = LogManager.getLogger();
 	public HomePage(WebDriver driver,ExtentTest test) {
 		super(test,driver);
 		PageFactory.initElements(driver, this);
@@ -56,7 +60,20 @@ public class HomePage extends BasePage{
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-	}	
+	}
+	
+	
+	public void verifyPageTitle() {
+		try {
+			Assert.assertEquals(driver.getTitle().toString(), "Local, National, & Global Daily Weather Forecast | AccuWeather");
+			logger.info("PASS: Page title is matching");
+		} catch (Exception e) {
+			e.printStackTrace();
+			logger.error("FAIL: Page title is not matching");
+			Assert.fail();
+		}
+		
+	}
 }
 
 

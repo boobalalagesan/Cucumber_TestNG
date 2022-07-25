@@ -29,13 +29,14 @@ public class BasePage {
 	public WebDriver driver;
 	public ExtentReports extent=ExtentReportManager.setExtentReport();
 	public ExtentTest test;
-	public static Logger logger = LogManager.getLogger();
+	Logger logger = LogManager.getLogger();
 	public HomePage homePage;
 	public ResultPage resultsPage;
 	public WeatherAPI weatherAPI;
 	
-	
-	public String TestCity="Salem";
+	public static int expectedValue;
+	public static int actualValue;
+	public static String TestCity;
 	public BasePage() {
 		
 	}
@@ -73,6 +74,7 @@ public class BasePage {
 			System.out.println();
 		}
 		driver.manage().window().maximize();
+		logger.info(Browser +" browser launched");
 		return driver;
 	}
 	

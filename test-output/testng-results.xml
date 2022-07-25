@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2022-07-25T19:14:58 IST" name="Default suite" finished-at="2022-07-25T19:15:24 IST" duration-ms="25668">
+  <suite started-at="2022-07-25T23:11:02 IST" name="Default suite" finished-at="2022-07-25T23:11:18 IST" duration-ms="16721">
     <groups>
       <group name="cucumber">
-        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.cucumber.testNG.Runner@1b11171f]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
+        <method signature="AbstractTestNGCucumberTests.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.cucumber.testNG.FailedCaseRunner@1b11171f]" name="runScenario" class="io.cucumber.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test started-at="2022-07-25T19:14:58 IST" name="Default test" finished-at="2022-07-25T19:15:24 IST" duration-ms="25668">
-      <class name="com.cucumber.testNG.Runner">
-        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.cucumber.testNG.Runner@1b11171f]" started-at="2022-07-25T19:14:58 IST" name="setUpClass" finished-at="2022-07-25T19:14:59 IST" duration-ms="915" status="PASS">
+    <test started-at="2022-07-25T23:11:02 IST" name="Default test" finished-at="2022-07-25T23:11:18 IST" duration-ms="16721">
+      <class name="com.cucumber.testNG.FailedCaseRunner">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.cucumber.testNG.FailedCaseRunner@1b11171f]" started-at="2022-07-25T23:11:02 IST" name="setUpClass" finished-at="2022-07-25T23:11:02 IST" duration-ms="471" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@74c7522c]]>
+                <![CDATA[org.testng.TestRunner@f9b8129]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.cucumber.testNG.Runner@1b11171f]" started-at="2022-07-25T19:14:59 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2022-07-25T19:15:21 IST" duration-ms="22232" status="PASS">
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.cucumber.testNG.FailedCaseRunner@1b11171f]" started-at="2022-07-25T23:11:02 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2022-07-25T23:11:16 IST" duration-ms="13935" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA["Validate weather with UI and API"]]>
+                <![CDATA["validate temperature for multiple cities"]]>
               </value>
             </param>
             <param index="1">
@@ -34,14 +34,28 @@
               </value>
             </param>
           </params>
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: null
+at org.testng.Assert.fail(Assert.java:99)
+at org.testng.Assert.fail(Assert.java:106)
+at com.cucumber.pages.ResultPage.CompareTemp(ResultPage.java:35)
+at com.cucumber.StepDefinition.FeatureSteps.compare_temperature_from_api_with_ui(FeatureSteps.java:96)
+at ✽.Compare temperature from API with UI(file:///C:/Users/booba/git/Cucumber_TestNG/src/test/java/Features/CompareResults.feature:33)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- runScenario -->
-        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.cucumber.testNG.Runner@1b11171f]" started-at="2022-07-25T19:15:21 IST" name="tearDownClass" finished-at="2022-07-25T19:15:24 IST" duration-ms="2441" status="PASS">
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.cucumber.testNG.FailedCaseRunner@1b11171f]" started-at="2022-07-25T23:11:16 IST" name="tearDownClass" finished-at="2022-07-25T23:11:18 IST" duration-ms="2279" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->
-      </class> <!-- com.cucumber.testNG.Runner -->
+      </class> <!-- com.cucumber.testNG.FailedCaseRunner -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

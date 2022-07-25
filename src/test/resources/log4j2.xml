@@ -2,8 +2,8 @@
 <Configuration status="warn" name="MyApp" packages="">
 	<Appenders>
 		<RollingFile name="RollingFile"
-			fileName="logs/testlogs.log"
-			filePattern="logs/testlogs-%d{MM-dd-yyyy}.log.gz"
+			fileName="target/log4jlogs/testlogs.log"
+			filePattern="target/log4jlogs/testlogs-%d{MM-dd-yyyy}.log.gz"
 			ignoreExceptions="false">
 			<PatternLayout>
 				<Pattern>%d %p %c{1.} %m%n</Pattern>

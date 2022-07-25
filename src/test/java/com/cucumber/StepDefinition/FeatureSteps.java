@@ -1,6 +1,8 @@
 package com.cucumber.StepDefinition;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import com.cucumber.pages.BasePage;
 import com.cucumber.pages.HomePage;
@@ -10,50 +12,91 @@ import io.cucumber.java.*;
 import io.cucumber.java.en.*;
 
 public class FeatureSteps extends BasePage{
-
+	Logger logger = LogManager.getLogger();
 	@Before
-	public void setUp() {
-		//logger=Logger.getLogger("Cucumber_TestNG");
-		test=extent.createTest("Compare test results");
-		driver = openApplication("Chrome");
-		logger.trace("This is a message of type: trace");
-		
-		logger.debug("This is a message of type: debug");
-		
-		logger.info("This is a message of type: info");
-		
-		logger.warn("This is a message of type: warn");
-		
-		logger.error("This is a message of type: error");
-		
-		logger.fatal("This is a message of type: fatal");
+	public void setUp(Scenario s) {
+		test=extent.createTest(s.getName());
+		logger.info("Executing-> "+s.getName());
 	}
-	@Given("User launch Accuweather appication and search with City")
-	public void user_launch_accuweather_appication_and_search_with_city() {
 
+	@Given("Launch Accuweather application")
+	public void launch_accuweather_application() {
 		try {
-			
-			homePage=new HomePage(driver, test);
-			homePage.serachCity(TestCity);
+			driver = openApplication("Chrome");
+			logger.info("PASS: Launch Accuweather application");
 		} catch (Exception e) {
+			logger.error("FAIL: Launch Accuweather application");
 			Assert.fail();
 		}
+		
+	}
+	@Given("User search with City name as {string}")
+	public void user_search_with_city_name_as(String city) {
+		try {
+			TestCity=city;
+			homePage=new HomePage(driver, test);
+			homePage.serachCity(TestCity);
+			logger.info("PASS: User search with City name");
+		} 
+		catch (Exception e) {
+			logger.error("FAIL: User search with City name");
+			Assert.fail();
+		}
+	}
+
+	@When("Verify Page title")
+	public void verify_page_title() {
+	   try {
+		   homePage=new HomePage(driver, test);
+		   homePage.verifyPageTitle();
+		   logger.info("PASS: Verify Page title");
+	} catch (Exception e) {
+		logger.error("FAIL: Verify Page title");
+		Assert.fail();
+	} 
 	}
 	@When("User selects proper city in suggestion")
 	public void user_selects_proper_city_in_suggestion() {
 		try {
 			homePage.selectCityfromSuggestion();
+			logger.info("PASS: User selects proper city in suggestion");
 		} catch (Exception e) {
+			logger.error("FAIL: User selects proper city in suggestion");
 			Assert.fail();
 		}
 
+	}
+	
+	@Then("Get temperature value from UI")
+	public void get_temperature_value_from_ui() {
+		try {
+			resultsPage=new ResultPage(test, driver);
+			resultsPage.getUITemperature();;
+			logger.info("PASS: Get temperature value from UI");
+		} catch (Exception e) {
+			logger.error("FAIL: Get temperature value from UI");
+			Assert.fail();
+		}
+	}
+	@Then("Get temperature value from API")
+	public void get_temperature_value_from_api() {
+		try {
+			resultsPage=new ResultPage(test, driver);
+			resultsPage.getAPITemperature();
+			logger.info("PASS: Get temperature value from API");
+		} catch (Exception e) {
+			logger.error("FAIL: Get temperature value from API");
+			Assert.fail();
+		}
 	}
 	@Then("Compare temperature from API with UI")
 	public void compare_temperature_from_api_with_ui() {
 		try {
 			resultsPage=new ResultPage(test, driver);
 			resultsPage.CompareTemp();
+			logger.info("PASS: Compare temperature from API with UI");
 		} catch (Exception e) {
+			logger.error("FAIL: Compare temperature from API with UI");
 			Assert.fail();
 		}
 	}
@@ -62,7 +105,7 @@ public class FeatureSteps extends BasePage{
 	@After
 	public void teardown() {
 		String Status=test.getStatus().toString();
-		System.out.println("--------------------------Test status is "+Status+"----------------------------");
+		logger.info("--------------------------Test status is "+Status+"----------------------------");
 		extent.flush();
 		driver.quit();
 
