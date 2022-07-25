@@ -2,7 +2,8 @@ package com.cucumber.pages;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -28,17 +29,17 @@ public class BasePage {
 	public WebDriver driver;
 	public ExtentReports extent=ExtentReportManager.setExtentReport();
 	public ExtentTest test;
-	public Logger logger;
+	public static Logger logger = LogManager.getLogger();
 	public HomePage homePage;
 	public ResultPage resultsPage;
 	public WeatherAPI weatherAPI;
 	
 	
 	public String TestCity="Salem";
-	
 	public BasePage() {
-
+		
 	}
+	
 	public BasePage(ExtentTest test, WebDriver driver) {
 		this.driver=driver;
 		this.test=test;

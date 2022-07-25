@@ -13,8 +13,7 @@ import com.aventstack.extentreports.Status;
 public class HomePage extends BasePage{
 
 	public HomePage(WebDriver driver,ExtentTest test) {
-		this.driver=driver;
-		this.test=test;
+		super(test,driver);
 		PageFactory.initElements(driver, this);
 
 	}

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="13.603">
-    <testcase classname="Compare temperature from accuweather UI with API" name="Validate weather with UI and API" time="13.414">
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="22.374">
+    <testcase classname="Compare temperature from accuweather UI with API" name="Validate weather with UI and API" time="22.078">
         <system-out>
             <![CDATA[Given User launch Accuweather appication and search with City...............passed
 When User selects proper city in suggestion.................................passed

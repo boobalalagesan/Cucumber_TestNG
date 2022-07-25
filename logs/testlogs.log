@@ -1,0 +1,6 @@
+2022-07-25 19:15:08,875 TRACE c.c.p.BasePage This is a message of type: trace
+2022-07-25 19:15:08,884 DEBUG c.c.p.BasePage This is a message of type: debug
+2022-07-25 19:15:08,884 INFO c.c.p.BasePage This is a message of type: info
+2022-07-25 19:15:08,885 WARN c.c.p.BasePage This is a message of type: warn
+2022-07-25 19:15:08,885 ERROR c.c.p.BasePage This is a message of type: error
+2022-07-25 19:15:08,886 FATAL c.c.p.BasePage This is a message of type: fatal

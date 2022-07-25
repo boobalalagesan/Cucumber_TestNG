@@ -11,9 +11,9 @@ import com.cucumber.api.WeatherAPI;
 
 public class ResultPage extends BasePage{
 
-	public ResultPage(WebDriver driver,ExtentTest test) {
-		this.driver=driver;
-		this.test=test;
+
+	public ResultPage(ExtentTest test, WebDriver driver) {
+		super(test,driver);
 		PageFactory.initElements(driver, this);
 	}
 
