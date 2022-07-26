@@ -3,12 +3,22 @@
 	<groupId>com.example</groupId>
 	<artifactId>Cucumber_TestNG</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<properties>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+		<junit.version>4.13.1</junit.version>
+		<cucumber.version>7.4.1</cucumber.version>
+		<maven.compiler.version>3.8.1</maven.compiler.version>
+		<maven.surefire.version>2.22.2</maven.surefire.version>
+
+	</properties>
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.7.0</version>
+				<version>${maven.compiler.version}</version>
 				<configuration>
 					<source>11</source>
 					<target>11</target>
@@ -18,7 +28,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.0.0-M7</version>
+				<version>${maven.surefire.version}</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -44,58 +54,84 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<repositories>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+
+		<!-- cucumber dependencies-->
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
-			<version>7.4.1</version>
+			<version>${cucumber.version}</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-testng</artifactId>
-			<version>7.4.1</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-core -->
+
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-core</artifactId>
-			<version>7.4.1</version>
+			<version>${cucumber.version}</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-jvm-deps -->
+		
 		<dependency>
 			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-jvm-deps</artifactId>
-			<version>1.0.6</version>
-			<scope>provided</scope>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer -->
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-picocontainer</artifactId>
-			<version>7.4.1</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer -->
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-picocontainer</artifactId>
-			<version>7.4.1</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-jvm -->
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-jvm</artifactId>
-			<version>7.4.1</version>
-			<type>pom</type>
+			<artifactId>cucumber-plugin</artifactId>
+			<version>${cucumber.version}</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-junit</artifactId>
-			<version>7.4.1</version>
+			<version>${cucumber.version}</version>
 		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>gherkin</artifactId>
+			<version>24.0.0</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>3.141.59</version>
+		</dependency>
+
+		<dependency>
+			<groupId>tech.grasshopper</groupId>
+			<artifactId>extentreports-cucumber6-adapter</artifactId>
+			<version>2.8.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-testng</artifactId>
+			<version>${cucumber.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>4.1.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>4.1.2</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-api</artifactId>
@@ -106,60 +142,55 @@
 			<artifactId>log4j-core</artifactId>
 			<version>2.17.2</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+
 		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<version>3.141.59</version>
+			<groupId>com.github.ralfstuckert.pdfbox-layout</groupId>
+			<artifactId>pdfbox2-layout</artifactId>
+			<version>1.0.1</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+
 		<dependency>
 			<groupId>io.github.bonigarcia</groupId>
 			<artifactId>webdrivermanager</artifactId>
 			<version>5.1.0</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>7.4.0</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
 			<version>20211205</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-core -->
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest</artifactId>
-			<version>2.2</version>
-			<scope>test</scope>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
 			<version>1.4</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/javax.activation/activation -->
+
 		<dependency>
 			<groupId>javax.activation</groupId>
 			<artifactId>activation</artifactId>
 			<version>1.1.1</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+
 		<dependency>
 			<groupId>com.aventstack</groupId>
 			<artifactId>extentreports</artifactId>
 			<version>4.0.0</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/net.sourceforge.jexcelapi/jxl -->
+
 		<dependency>
 			<groupId>net.sourceforge.jexcelapi</groupId>
 			<artifactId>jxl</artifactId>
 			<version>2.6.12</version>
 		</dependency>
+
 
 	</dependencies>
 </project>

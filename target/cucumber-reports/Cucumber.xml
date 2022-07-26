@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="14.031">
-    <testcase classname="Compare temperature from accuweather UI with API" name="validate temperature for multiple cities" time="13.824">
+<testsuite errors="0" failures="3" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="4" time="59.153">
+    <testcase classname="Compare temperature from accuweather UI with API" name="validate temperature for multiple cities" time="17.633">
+        <failure message="null" type="java.lang.AssertionError">
+            <![CDATA[Given Launch Accuweather application........................................passed
+Given User search with City name as "Salem".................................passed
+When User selects proper city in suggestion.................................passed
+Then Get temperature value from UI..........................................passed
+And Get temperature value from API..........................................passed
+Then Compare temperature from API with UI...................................failed
+
+StackTrace:
+java.lang.AssertionError: null
+	at org.testng.Assert.fail(Assert.java:99)
+	at org.testng.Assert.fail(Assert.java:106)
+	at com.cucumber.pages.ResultPage.CompareTemp(ResultPage.java:35)
+	at com.cucumber.StepDefinition.FeatureSteps.compare_temperature_from_api_with_ui(FeatureSteps.java:96)
+	at ✽.Compare temperature from API with UI(file:///C:/Users/booba/git/Cucumber_TestNG/src/test/java/Features/CompareResults.feature:33)
+]]>
+        </failure>
+    </testcase>
+    <testcase classname="Compare temperature from accuweather UI with API" name="validate temperature for multiple cities 2" time="13.253">
         <failure message="null" type="java.lang.AssertionError">
             <![CDATA[Given Launch Accuweather application........................................passed
 Given User search with City name as "Namakkal"..............................passed
@@ -18,5 +37,35 @@ java.lang.AssertionError: null
 	at ✽.Compare temperature from API with UI(file:///C:/Users/booba/git/Cucumber_TestNG/src/test/java/Features/CompareResults.feature:33)
 ]]>
         </failure>
+    </testcase>
+    <testcase classname="Compare temperature from accuweather UI with API" name="validate temperature for multiple cities 3" time="14.272">
+        <failure message="null" type="java.lang.AssertionError">
+            <![CDATA[Given Launch Accuweather application........................................passed
+Given User search with City name as "Karur".................................passed
+When User selects proper city in suggestion.................................passed
+Then Get temperature value from UI..........................................passed
+And Get temperature value from API..........................................passed
+Then Compare temperature from API with UI...................................failed
+
+StackTrace:
+java.lang.AssertionError: null
+	at org.testng.Assert.fail(Assert.java:99)
+	at org.testng.Assert.fail(Assert.java:106)
+	at com.cucumber.pages.ResultPage.CompareTemp(ResultPage.java:35)
+	at com.cucumber.StepDefinition.FeatureSteps.compare_temperature_from_api_with_ui(FeatureSteps.java:96)
+	at ✽.Compare temperature from API with UI(file:///C:/Users/booba/git/Cucumber_TestNG/src/test/java/Features/CompareResults.feature:33)
+]]>
+        </failure>
+    </testcase>
+    <testcase classname="Compare temperature from accuweather UI with API" name="validate temperature for multiple cities 4" time="13.711">
+        <system-out>
+            <![CDATA[Given Launch Accuweather application........................................passed
+Given User search with City name as "Chennai"...............................passed
+When User selects proper city in suggestion.................................passed
+Then Get temperature value from UI..........................................passed
+And Get temperature value from API..........................................passed
+Then Compare temperature from API with UI...................................passed
+]]>
+        </system-out>
     </testcase>
 </testsuite>
