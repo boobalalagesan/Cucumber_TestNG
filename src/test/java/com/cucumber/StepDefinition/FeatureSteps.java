@@ -3,7 +3,10 @@ package com.cucumber.StepDefinition;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+
+import com.aventstack.extentreports.ExtentTest;
 import com.cucumber.pages.BasePage;
 import com.cucumber.pages.HomePage;
 import com.cucumber.pages.ResultPage;
@@ -12,6 +15,8 @@ import io.cucumber.java.*;
 import io.cucumber.java.en.*;
 
 public class FeatureSteps extends BasePage{
+	
+		
 	Logger logger = LogManager.getLogger();
 	@Before
 	public void setUp(Scenario s) {
