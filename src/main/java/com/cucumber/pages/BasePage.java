@@ -24,7 +24,10 @@ import com.cucumber.utils.RunConfig;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-
+/**
+ * @author Boobal Alagesn
+ *
+ */
 public class BasePage {
 	public WebDriver driver;
 	public ExtentReports extent=ExtentReportManager.setExtentReport();
@@ -33,9 +36,10 @@ public class BasePage {
 	public HomePage homePage;
 	public ResultPage resultsPage;
 	public WeatherAPI weatherAPI;
-	
+	public static int row1;
 	public static int expectedValue;
 	public static int actualValue;
+
 	public static String TestCity;
 	public BasePage() {
 		

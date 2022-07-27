@@ -111,6 +111,7 @@ public class FeatureSteps extends BasePage{
 	public void teardown() {
 		String Status=test.getStatus().toString();
 		logger.info("--------------------------Test status is "+Status+"----------------------------");
+
 		extent.flush();
 		driver.quit();
 
