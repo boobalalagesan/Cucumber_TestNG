@@ -8,7 +8,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions( 
 		features = "src/test/java/Features", 
 		glue = "com.cucumber.StepDefinition",
-		tags = "@ValidateWeather",
+		//tags = "@ValidatePageTitle",
 		monochrome = true,
 		dryRun = false,
 		plugin = { "pretty",
@@ -23,7 +23,7 @@ import io.cucumber.testng.CucumberOptions;
 
 public class Runner extends AbstractTestNGCucumberTests {
 	@Override
-	@DataProvider(parallel = true)
+	@DataProvider(parallel = false )
 	public Object[][] scenarios() {
 		return super.scenarios();
 	}

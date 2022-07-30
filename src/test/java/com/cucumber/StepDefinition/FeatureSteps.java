@@ -2,6 +2,10 @@ package com.cucumber.StepDefinition;
 
 
 import com.cucumber.utils.RunConfig;
+import jxl.Cell;
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.read.biff.BiffException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -15,17 +19,20 @@ import com.cucumber.pages.ResultPage;
 import io.cucumber.java.*;
 import io.cucumber.java.en.*;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 public class FeatureSteps extends BasePage{
 	Logger logger = LogManager.getLogger();
 	@Before
-	public void setUp(Scenario s) throws IOException {
+	public void setUp(Scenario s) throws IOException, InterruptedException {
 		ScenarioName=s.getName();
+		TimeUnit.SECONDS.sleep(2);
 
-		System.out.println(ScenarioName+ " Boobal");
+		System.out.println(ScenarioName);
 
-		row1= xl_reader.findCellRow("RunSheet",ScenarioName);
+		row1= xl_reader.findCellRow(RunConfig.RunSheet,ScenarioName);
 		try {
 			if(row1!=-1){
 			BrowserName= xl_reader.getCellData(RunConfig.RunSheet,ScenarioName,"Browser");

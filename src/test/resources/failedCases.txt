@@ -1,1 +1,1 @@
-file:src/test/java/Features/CompareResults.feature:8
+file:src/test/java/Features/CompareResults.feature:8:27:28:29:30

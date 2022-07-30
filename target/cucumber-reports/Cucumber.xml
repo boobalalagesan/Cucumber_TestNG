@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="1.257">
-    <testcase classname="Compare temperature from accuweather UI with API" name="Validate weather with UI and API" time="1.064">
+<testsuite errors="0" failures="5" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="7" time="49.499">
+    <testcase classname="Compare temperature from accuweather UI with API" name="Validate weather with UI and API" time="18.809">
+        <failure message="null" type="java.lang.AssertionError">
+            <![CDATA[Given Launch Accuweather application........................................passed
+Given User search with City name as "Namakkal"..............................passed
+When User selects proper city in suggestion.................................passed
+Then Get temperature value from UI..........................................passed
+And Get temperature value from API..........................................passed
+Then Compare temperature from API with UI...................................failed
+
+StackTrace:
+java.lang.AssertionError: null
+	at org.testng.Assert.fail(Assert.java:99)
+	at org.testng.Assert.fail(Assert.java:106)
+	at com.cucumber.pages.ResultPage.CompareTemp(ResultPage.java:36)
+	at com.cucumber.StepDefinition.FeatureSteps.compare_temperature_from_api_with_ui(FeatureSteps.java:124)
+	at ✽.Compare temperature from API with UI(file:///C:/Users/booba/git/Cucumber_TestNG/src/test/java/Features/CompareResults.feature:14)
+]]>
+        </failure>
+    </testcase>
+    <testcase classname="Compare temperature from accuweather UI with API" name="Validate temperature for multiple cities" time="2.031">
+        <failure message="" type="java.lang.NullPointerException">
+            <![CDATA[Given Launch Accuweather application........................................skipped
+Given User search with City name as "Salem".................................skipped
+When User selects proper city in suggestion.................................skipped
+Then Get temperature value from UI..........................................skipped
+And Get temperature value from API..........................................skipped
+Then Compare temperature from API with UI...................................skipped
+
+StackTrace:
+java.lang.NullPointerException
+	at com.cucumber.utils.XL_Reader.findCellRow(XL_Reader.java:283)
+	at com.cucumber.StepDefinition.FeatureSteps.setUp(FeatureSteps.java:35)
+]]>
+        </failure>
+    </testcase>
+    <testcase classname="Compare temperature from accuweather UI with API" name="Validate temperature for multiple cities 2" time="2.019">
         <failure message="" type="java.lang.NullPointerException">
             <![CDATA[Given Launch Accuweather application........................................skipped
 Given User search with City name as "Namakkal"..............................skipped
@@ -12,8 +47,56 @@ Then Compare temperature from API with UI...................................skip
 StackTrace:
 java.lang.NullPointerException
 	at com.cucumber.utils.XL_Reader.findCellRow(XL_Reader.java:283)
-	at com.cucumber.StepDefinition.FeatureSteps.setUp(FeatureSteps.java:28)
+	at com.cucumber.StepDefinition.FeatureSteps.setUp(FeatureSteps.java:35)
 ]]>
         </failure>
+    </testcase>
+    <testcase classname="Compare temperature from accuweather UI with API" name="Validate temperature for multiple cities 3" time="2.023">
+        <failure message="" type="java.lang.NullPointerException">
+            <![CDATA[Given Launch Accuweather application........................................skipped
+Given User search with City name as "Karur".................................skipped
+When User selects proper city in suggestion.................................skipped
+Then Get temperature value from UI..........................................skipped
+And Get temperature value from API..........................................skipped
+Then Compare temperature from API with UI...................................skipped
+
+StackTrace:
+java.lang.NullPointerException
+	at com.cucumber.utils.XL_Reader.findCellRow(XL_Reader.java:283)
+	at com.cucumber.StepDefinition.FeatureSteps.setUp(FeatureSteps.java:35)
+]]>
+        </failure>
+    </testcase>
+    <testcase classname="Compare temperature from accuweather UI with API" name="Validate temperature for multiple cities 4" time="2.018">
+        <failure message="" type="java.lang.NullPointerException">
+            <![CDATA[Given Launch Accuweather application........................................skipped
+Given User search with City name as "Chennai"...............................skipped
+When User selects proper city in suggestion.................................skipped
+Then Get temperature value from UI..........................................skipped
+And Get temperature value from API..........................................skipped
+Then Compare temperature from API with UI...................................skipped
+
+StackTrace:
+java.lang.NullPointerException
+	at com.cucumber.utils.XL_Reader.findCellRow(XL_Reader.java:283)
+	at com.cucumber.StepDefinition.FeatureSteps.setUp(FeatureSteps.java:35)
+]]>
+        </failure>
+    </testcase>
+    <testcase classname="Verify UI scenarios" name="Validate Page title" time="6.649">
+        <system-out>
+            <![CDATA[Given Launch Accuweather application........................................passed
+When Verify Page title......................................................passed
+]]>
+        </system-out>
+    </testcase>
+    <testcase classname="Verify UI scenarios" name="Fetch UI temperature value" time="15.708">
+        <system-out>
+            <![CDATA[Given Launch Accuweather application........................................passed
+Given User search with City name as "Salem".................................passed
+When User selects proper city in suggestion.................................passed
+Then Get temperature value from UI..........................................passed
+]]>
+        </system-out>
     </testcase>
 </testsuite>

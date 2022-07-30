@@ -26,7 +26,7 @@ public class ExcelValidatetor extends BasePage {
        /* XL_Writer xl_writer=new XL_Writer(RunConfig.DATA_PATH);
         xl_writer.setCellData("RunSheet",2,3,"Boobal-VAl");*/
 
-       int a=xl_reader.findCellRow("RunSheet","FireFox");
+       int a=xl_reader.findCellRow("Sheet1","Validate weather with UI and API");
         System.out.println(a);
 
 
