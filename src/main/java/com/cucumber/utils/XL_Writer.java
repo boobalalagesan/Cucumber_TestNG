@@ -2,10 +2,9 @@ package com.cucumber.utils;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.xssf.usermodel.*;
 import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 
 import java.io.FileInputStream;
@@ -58,6 +57,12 @@ public class XL_Writer {
             cell.setCellStyle(cs);
             String strVal = String.valueOf(value);
             cell.setCellValue(strVal);
+            if(value.equalsIgnoreCase("fail")){
+                cell.setCellStyle(setCellColour("RED"));
+            }
+            else if (value.equalsIgnoreCase("pass")) {
+                cell.setCellStyle(setCellColour("GREEN"));
+            }
             //System.out.println(value);
             fileOutputStream = new FileOutputStream(path);
             workbook.write(fileOutputStream);
@@ -69,5 +74,19 @@ public class XL_Writer {
             return false;
         }
         return true;
+    }
+
+    public XSSFCellStyle setCellColour(String Colour) {
+
+        XSSFCellStyle style = workbook.createCellStyle();
+        if(Colour.equalsIgnoreCase("RED")){
+            style.setFillForegroundColor(IndexedColors.RED.getIndex());
+        }
+        else if (Colour.equalsIgnoreCase("Green")) {
+            style.setFillForegroundColor(IndexedColors.LIGHT_GREEN.getIndex());
+        }
+        style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+        return style;
     }
 }

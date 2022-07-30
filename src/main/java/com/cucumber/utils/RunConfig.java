@@ -18,5 +18,5 @@ public class RunConfig {
 	public static String Write_Sheet="TestData";
 	public static final String DATA_PATH=System.getProperty("user.dir")+File.separator+"RunData"+File.separator+"TestData.xlsx";
 
-	public static final String RunSheet= "RunSheet";
+	public static final String RunSheet= "Sheet1";
 }

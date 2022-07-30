@@ -23,6 +23,8 @@ public class FeatureSteps extends BasePage{
 	public void setUp(Scenario s) throws IOException {
 		ScenarioName=s.getName();
 
+		System.out.println(ScenarioName+ " Boobal");
+
 		row1= xl_reader.findCellRow("RunSheet",ScenarioName);
 		try {
 			if(row1!=-1){

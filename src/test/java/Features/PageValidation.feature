@@ -7,7 +7,7 @@ Given Launch Accuweather application
    Scenario: Validate Page title
    When Verify Page title
    
-   @Sanity @Smoke @FetchweatherFronUI
+   @Sanity @Smoke @FetchweatherFromUI
    Scenario: Fetch UI temperature value
    
    Given User search with City name as "Salem"

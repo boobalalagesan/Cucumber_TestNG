@@ -34,6 +34,7 @@ public class HomePage extends BasePage{
 			}
 			waitUntil(searchBar);
 			searchBar.sendKeys(city+Keys.ENTER);
+			xl_writer.setCellData(RunConfig.RunSheet,row1,4,city);
 
 			test.log(Status.PASS, "Searched successfilly");
 			takeScreenshot();

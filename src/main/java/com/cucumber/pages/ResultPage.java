@@ -2,6 +2,7 @@ package com.cucumber.pages;
 
 import java.io.IOException;
 
+import com.cucumber.utils.RunConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
@@ -48,8 +49,8 @@ public class ResultPage extends BasePage{
 	    actualValue=Integer.parseInt(Stringcount);
 		takeScreenshot();
 		test.log(Status.PASS, "Temperature from UI is "+actualValue);
-		
-			
+		xl_writer.setCellData(RunConfig.RunSheet,row1,5,Stringcount);
+
 		} catch (Exception e) {
 			logger.error("FAIL: Unable to fetch temperature from UI");
 			Assert.fail();
@@ -61,7 +62,7 @@ public class ResultPage extends BasePage{
 			weatherAPI=new WeatherAPI();
 			expectedValue= weatherAPI.getTemp(TestCity);
 			test.log(Status.PASS, "Temperature from API is "+expectedValue);
-			
+			xl_writer.setCellData(RunConfig.RunSheet,row1,6,String.valueOf(expectedValue));
 		} catch (Exception e) {
 			logger.error("FAIL: Unable to fetch temperature from API");
 			Assert.fail();

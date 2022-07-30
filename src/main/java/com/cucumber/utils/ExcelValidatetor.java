@@ -7,7 +7,7 @@ import java.io.IOException;
 public class ExcelValidatetor extends BasePage {
 
     public static void main(String args[]) throws Throwable {
-        XL_Reader xl_reader = new XL_Reader("RunData\\TestData.xlsx");
+        XL_Reader xl_reader = new XL_Reader(RunConfig.DATA_PATH);
        /* String cellval = xl_reader.getCellData("TestCaseData", 1, 1);
         System.out.println(xl_reader.getRowCount("TestCaseData"));
         System.out.println(xl_reader.getCoumnCount("TestCaseData"));
@@ -23,8 +23,11 @@ public class ExcelValidatetor extends BasePage {
        /*String q= xl_reader.getCellData(RunConfig.RunSheet,"Fetch UI temperature value","Browser");
        System.out.println(q);*/
 
-        XL_Writer xl_writer=new XL_Writer(RunConfig.DATA_PATH);
-        xl_writer.setCellData("RunSheet",2,3,"Boobal-VAl");
+       /* XL_Writer xl_writer=new XL_Writer(RunConfig.DATA_PATH);
+        xl_writer.setCellData("RunSheet",2,3,"Boobal-VAl");*/
+
+       int a=xl_reader.findCellRow("RunSheet","FireFox");
+        System.out.println(a);
 
 
 

@@ -267,7 +267,7 @@ public class XL_Reader {
     }
 
     public int findCellRow(String sheetName, String cellValue) throws IOException {
-        int r=0 ;
+        int r ;
         boolean flag = false;
         int row_count = getRowCount(sheetName);
         int col_count = getColumnCount(sheetName);
@@ -279,10 +279,11 @@ public class XL_Reader {
                 row = sheet.getRow(r);
             }
             for (int c = 0; c < col_count; c++) {
-                System.out.println(row.getCell(c).toString().trim());
+               System.out.println(row.getCell(c).toString().trim());
                 if (row.getCell(c).toString().trim().equalsIgnoreCase(cellValue.trim())) {
                     flag = true;
-                    //System.out.println("Match found");
+                    System.out.println(row.getCell(c).toString().trim());
+                    System.out.println("Match found");
                     break;
                 }
             }
