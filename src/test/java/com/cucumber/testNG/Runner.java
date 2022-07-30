@@ -8,7 +8,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions( 
 		features = "src/test/java/Features", 
 		glue = "com.cucumber.StepDefinition",
-		tags = "@Smoke or @Regression",
+		tags = "@Sanity",
 		monochrome = true,
 		dryRun = false,
 		plugin = { "pretty",

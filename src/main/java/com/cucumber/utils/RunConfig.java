@@ -16,4 +16,7 @@ public class RunConfig {
 
 	public static String Test_ApplicationURL="https://www.accuweather.com/";
 	public static String Write_Sheet="TestData";
+	public static final String DATA_PATH=System.getProperty("user.dir")+File.separator+"RunData"+File.separator+"TestData.xlsx";
+
+	public static final String RunSheet= "RunSheet";
 }

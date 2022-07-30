@@ -3,6 +3,8 @@ package com.cucumber.pages;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import com.cucumber.utils.RunConfig;
+import com.cucumber.utils.XL_Writer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
@@ -67,8 +69,10 @@ public class HomePage extends BasePage{
 		try {
 			Assert.assertEquals(driver.getTitle().toString(), "Local, National, & Global Daily Weather Forecast | AccuWeather");
 			logger.info("PASS: Page title is matching");
+			test.log(Status.PASS,"Page title is matching");
 		} catch (Exception e) {
 			e.printStackTrace();
+			test.log(Status.FAIL,"Page title is not matching");
 			logger.error("FAIL: Page title is not matching");
 			Assert.fail();
 		}

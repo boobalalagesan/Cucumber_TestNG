@@ -13,7 +13,6 @@ import java.io.IOException;
 
 /**
  * @author Boobal Alagesn
- *
  */
 public class XL_Reader {
 
@@ -106,11 +105,11 @@ public class XL_Reader {
 
     }
 
-    public String getCellData(String Sheet, int RowCount, int ColumnCount) throws IOException {
+    public String getCellData(String sheetName, int RowCount, int ColumnCount) throws IOException {
         if ((RowCount <= 0) && (ColumnCount <= 0)) {
             return "";
         }
-        sheet = workbook.getSheet(Sheet);
+        sheet = workbook.getSheet(sheetName);
         row = sheet.getRow(RowCount);
         cell = row.getCell(ColumnCount);
         DataFormatter dataFormatter = new DataFormatter();
@@ -165,7 +164,7 @@ public class XL_Reader {
 
     public String getCellData(String sheetName, String rowName, String colName) throws IOException {
         try {
-            int rowNum = getStringRowNum(rowName);
+            int rowNum = getStringRowNum(sheetName, rowName);
             // System.out.println(rowNum);
             if (rowNum <= 0)
                 return "";
@@ -232,7 +231,7 @@ public class XL_Reader {
         return sheet.getRow(1).getLastCellNum();
     }
 
-    public int getStringRowNum(String rowName) throws IOException {
+    public int getStringRowNum(String sheetName,String rowName) throws IOException {
         int rows = sheet.getLastRowNum();
         int rowCount = 0;
         Boolean flag = false;
@@ -255,9 +254,9 @@ public class XL_Reader {
         sheet = workbook.getSheet(sheetName);
         int columns = getColumnCount(sheetName);
         int index = 0;
-        int ActualRowCount = getStringRowNum(testcaseName);
+        int ActualRowCount = getStringRowNum(sheetName,testcaseName);
         row = sheet.getRow(ActualRowCount);
-        String[] dataObjectArray = new String[columns-1];
+        String[] dataObjectArray = new String[columns - 1];
         for (int col = 1; col < columns; col++) {
             cell = row.getCell(col);
             DataFormatter dataFormatter = new DataFormatter();
@@ -265,6 +264,34 @@ public class XL_Reader {
             index++;
         }
         return dataObjectArray;
+    }
+
+    public int findCellRow(String sheetName, String cellValue) throws IOException {
+        int r=0 ;
+        boolean flag = false;
+        int row_count = getRowCount(sheetName);
+        int col_count = getColumnCount(sheetName);
+
+        for (r = 0; r <= row_count; r++) {
+            if (flag) {
+                break;
+            } else {
+                row = sheet.getRow(r);
+            }
+            for (int c = 0; c < col_count; c++) {
+                System.out.println(row.getCell(c).toString().trim());
+                if (row.getCell(c).toString().trim().equalsIgnoreCase(cellValue.trim())) {
+                    flag = true;
+                    //System.out.println("Match found");
+                    break;
+                }
+            }
+
+        }
+        if (flag)
+            return r;
+        else
+            return -1;
     }
 
 

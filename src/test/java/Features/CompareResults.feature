@@ -15,7 +15,7 @@ Given Launch Accuweather application
     
     @Regression @ValidateWeatherForMultipleCity
     
-    Scenario Outline: validate temperature for multiple cities
+    Scenario Outline: Validate temperature for multiple cities
     Given User search with City name as "<city>"
     When User selects proper city in suggestion
     Then Get temperature value from UI

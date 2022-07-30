@@ -2,6 +2,8 @@ package com.cucumber.pages;
 
 import java.io.IOException;
 
+import com.cucumber.utils.XL_Reader;
+import com.cucumber.utils.XL_Writer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
@@ -39,8 +41,13 @@ public class BasePage {
 	public static int row1;
 	public static int expectedValue;
 	public static int actualValue;
-
 	public static String TestCity;
+	public static String ScenarioName;
+	public static String BrowserName;
+
+
+	public static XL_Reader xl_reader= new XL_Reader(RunConfig.DATA_PATH);
+	public static XL_Writer xl_writer=new XL_Writer(RunConfig.DATA_PATH);
 	public BasePage() {
 		
 	}

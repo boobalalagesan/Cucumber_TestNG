@@ -1,6 +1,7 @@
 package com.cucumber.StepDefinition;
 
 
+import com.cucumber.utils.RunConfig;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -14,12 +15,25 @@ import com.cucumber.pages.ResultPage;
 import io.cucumber.java.*;
 import io.cucumber.java.en.*;
 
+import java.io.IOException;
+
 public class FeatureSteps extends BasePage{
-	
-		
 	Logger logger = LogManager.getLogger();
 	@Before
-	public void setUp(Scenario s) {
+	public void setUp(Scenario s) throws IOException {
+		ScenarioName=s.getName();
+
+		row1= xl_reader.findCellRow("RunSheet",ScenarioName);
+		try {
+			if(row1!=-1){
+			BrowserName= xl_reader.getCellData(RunConfig.RunSheet,ScenarioName,"Browser");
+			}
+
+		}
+		catch (Exception e){
+			System.out.println("Scenario is not found in Run Sheet");
+			e.printStackTrace();
+		}
 		test=extent.createTest(s.getName());
 		logger.info("Executing-> "+s.getName());
 	}
@@ -27,7 +41,7 @@ public class FeatureSteps extends BasePage{
 	@Given("Launch Accuweather application")
 	public void launch_accuweather_application() {
 		try {
-			driver = openApplication("Chrome");
+			driver = openApplication(BrowserName);
 			logger.info("PASS: Launch Accuweather application");
 		} catch (Exception e) {
 			logger.error("FAIL: Launch Accuweather application");
@@ -110,8 +124,8 @@ public class FeatureSteps extends BasePage{
 	@After
 	public void teardown() {
 		String Status=test.getStatus().toString();
+		xl_writer.setCellData(RunConfig.RunSheet,row1,3,Status);
 		logger.info("--------------------------Test status is "+Status+"----------------------------");
-
 		extent.flush();
 		driver.quit();
 

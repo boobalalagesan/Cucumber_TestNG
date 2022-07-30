@@ -4,7 +4,7 @@ Background:
 Given Launch Accuweather application
 
    @Sanity @ValidatePageTitle
-   Scenario: Validate weather with UI and API
+   Scenario: Validate Page title
    When Verify Page title
    
    @Sanity @Smoke @FetchweatherFronUI

@@ -1,8 +1,10 @@
 package com.cucumber.utils;
 
+import com.cucumber.pages.BasePage;
+
 import java.io.IOException;
 
-public class ExcelValidatetor {
+public class ExcelValidatetor extends BasePage {
 
     public static void main(String args[]) throws Throwable {
         XL_Reader xl_reader = new XL_Reader("RunData\\TestData.xlsx");
@@ -15,10 +17,15 @@ public class ExcelValidatetor {
 
         //int res= xl_reader.getStringRowNum("C1R5");
 
-         String[] res= xl_reader.getTestData("TestCaseData", "C1R4");
-        for (String a:res) {
-            System.out.println(a);
-        }
+         /*int  res= xl_reader.getStringRowNum("RunSheet", "Fetch UI temperature value");
+        System.out.println(res);*/
+
+       /*String q= xl_reader.getCellData(RunConfig.RunSheet,"Fetch UI temperature value","Browser");
+       System.out.println(q);*/
+
+        XL_Writer xl_writer=new XL_Writer(RunConfig.DATA_PATH);
+        xl_writer.setCellData("RunSheet",2,3,"Boobal-VAl");
+
 
 
     }
