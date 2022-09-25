@@ -3,7 +3,7 @@ Feature: Compare temperature from accuweather UI with API
 Background:
 Given Launch Accuweather application
   
-   
+   #############
    @Smoke @ValidateWeather
    Scenario: Validate weather with UI and API
       
