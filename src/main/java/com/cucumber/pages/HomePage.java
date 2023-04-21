@@ -45,7 +45,7 @@ public class HomePage extends BasePage{
 	}
 
 
-	@FindBy(xpath = "//div[@class='content-module']//a[1]") WebElement Suggest;
+	@FindBy(xpath = "//div[@class='locations-list content-module']/a[1]") WebElement Suggest;
 	@FindBy(how = How.ID, using = "google_ads_iframe_/6581/web/in/interstitial/admin/search_0")List<WebElement> totalFrames;
 	@FindBy(xpath = "//div[@id='dismiss-button']/div") WebElement dismissButton;
 

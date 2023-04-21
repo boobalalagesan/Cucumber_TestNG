@@ -1,14 +1,13 @@
 package com.cucumber.testNG;
 
 import org.testng.annotations.DataProvider;
-
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions( 
 		features = "src/test/java/Features", 
 		glue = "com.cucumber.StepDefinition",
-		//tags = "@ValidatePageTitle",
+//		tags = "@ValidateWeather",
 		monochrome = true,
 		dryRun = false,
 		plugin = { "pretty",

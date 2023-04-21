@@ -28,4 +28,3 @@ Given Launch Accuweather application
     |Namakkal|
     |Karur|
     |Chennai|
-    

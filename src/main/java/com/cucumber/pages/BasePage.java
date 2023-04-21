@@ -1,7 +1,7 @@
 package com.cucumber.pages;
 
 import java.io.IOException;
-
+import java.time.Duration;
 import com.cucumber.utils.XL_Reader;
 import com.cucumber.utils.XL_Writer;
 import org.apache.logging.log4j.LogManager;
@@ -15,7 +15,6 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
@@ -23,8 +22,6 @@ import com.aventstack.extentreports.Status;
 import com.cucumber.api.WeatherAPI;
 import com.cucumber.utils.ExtentReportManager;
 import com.cucumber.utils.RunConfig;
-
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 /**
  * @author Boobal Alagesn
@@ -70,15 +67,12 @@ public class BasePage {
 
 	public WebDriver openBrowser(String Browser) {
 		if(Browser.equalsIgnoreCase("Chrome"))	{
-			WebDriverManager.chromedriver().setup();
 			driver=new ChromeDriver();
 		}
 		else if (Browser.equalsIgnoreCase("Firefox")) {
-			WebDriverManager.firefoxdriver().setup();
 			driver=new FirefoxDriver();
 		}
 		else if (Browser.equalsIgnoreCase("Edge")) {
-			WebDriverManager.edgedriver().setup();
 			driver=new EdgeDriver();
 		}
 		else {
@@ -96,7 +90,7 @@ public class BasePage {
 	}
 	
 	public void waitUntil(WebElement element) {
-		WebDriverWait wait = new WebDriverWait(driver,30);
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 		
 	}
